@@ -1,6 +1,8 @@
-FROM alpine:latest
-RUN apk update && apk add --no-cache bash
-WORKDIR /usr/local/bin
-COPY test.sh .
-RUN chmod +x test.sh
-ENTRYPOINT ["./test.sh"]
+# Utiliser une image de base appropriée
+FROM debian:latest
+
+# Copier le test.sh dans le conteneur
+COPY test.sh /test.sh
+
+# Définir le point d'entrée pour exécuter le script au démarrage du conteneur
+CMD ["/bin/bash", "/test.sh"]
